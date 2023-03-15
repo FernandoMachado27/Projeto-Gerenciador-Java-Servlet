@@ -2,6 +2,7 @@ package br.com.fernando.gerenciador.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,27 +21,37 @@ public class UnicaEntradaServlet extends HttpServlet { // controlador
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String paramAcao = request.getParameter("acao");
+		String nome = null;
 		
 		if (paramAcao.equals("ListaEmpresas")) {
 			ListaEmpresas acao = new ListaEmpresas();
-			acao.executa(request, response);
+			nome = acao.executa(request, response);
 			
 		}else if (paramAcao.equals("RemoveEmpresa")) {
 			RemoveEmpresa acao = new RemoveEmpresa();
-			acao.executa(request, response);
+			nome = acao.executa(request, response);
 			
 		}else if (paramAcao.equals("MostraEmpresa")) {
 			MostraEmpresa acao = new MostraEmpresa();
-			acao.executa(request, response);
+			nome = acao.executa(request, response);
 			
 		}else if (paramAcao.equals("AlteraEmpresa")) {
 			AlteraEmpresa acao = new AlteraEmpresa();
-			acao.executa(request, response);
+			nome = acao.executa(request, response);
 			
 		}else if (paramAcao.equals("NovaEmpresa")) {
 			NovaEmpresa acao = new NovaEmpresa();
-			acao.executa(request, response);
+			nome = acao.executa(request, response);
 			
+		}
+		
+		String[] tipoEEndereco = nome.split(":"); // separa a String baseada no caractere
+		
+		if(tipoEEndereco[0].equals("forward")) { // se na primeira posição tem forward
+			RequestDispatcher rd = request.getRequestDispatcher(tipoEEndereco[1]); // então usa o valor
+			rd.forward(request, response);
+		}else { 
+			response.sendRedirect(tipoEEndereco[1]); // navegador redireciona
 		}
 	}
 

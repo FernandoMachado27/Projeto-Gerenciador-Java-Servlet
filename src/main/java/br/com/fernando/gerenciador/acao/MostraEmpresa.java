@@ -12,7 +12,7 @@ import br.com.fernando.gerenciador.modelo.Empresa;
 
 public class MostraEmpresa {
 	
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("mostrando dados da empresa");
 		
 		String paramId = request.getParameter("id");
@@ -24,8 +24,8 @@ public class MostraEmpresa {
 		System.out.println(empresa.getNome());
 		
 		request.setAttribute("empresa", empresa);
-		RequestDispatcher rd = request.getRequestDispatcher("/formAlteraEmpresa.jsp"); // despacha para esta pagina
-		rd.forward(request, response);
+		
+		return "forward:/formAlteraEmpresa.jsp"; // despacha para esta pagina
 	}
 
 }

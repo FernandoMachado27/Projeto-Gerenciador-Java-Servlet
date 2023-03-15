@@ -13,7 +13,7 @@ import br.com.fernando.gerenciador.modelo.Empresa;
 
 public class ListaEmpresas { // não é um Servlet
 	
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("listando empresas");
 		
@@ -22,8 +22,8 @@ public class ListaEmpresas { // não é um Servlet
 		
 		request.setAttribute("empresas", lista);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas.jsp");
-		rd.forward(request, response);
+		return "forward:/listaEmpresas.jsp";
+		
 	}
 
 }

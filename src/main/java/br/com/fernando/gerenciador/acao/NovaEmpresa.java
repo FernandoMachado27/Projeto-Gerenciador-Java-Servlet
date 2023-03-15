@@ -14,7 +14,7 @@ import br.com.fernando.gerenciador.modelo.Empresa;
 
 public class NovaEmpresa {
 	
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("ação adicionando empresa");
 		
 		String nomeDaEmpresa = request.getParameter("nome");
@@ -37,7 +37,7 @@ public class NovaEmpresa {
 		
 		request.setAttribute("empresa", empresa.getNome()); // colocando nome na requisição para pegar no jsp
 		
-		response.sendRedirect("entrada?acao=ListaEmpresas"); // o navegador vai fazer um novo redirecionamento
+		return "redirect:entrada?acao=ListaEmpresas"; // o navegador vai fazer um novo redirecionamento
 	}
 
 }
