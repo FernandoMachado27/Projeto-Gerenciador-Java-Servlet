@@ -1,4 +1,4 @@
-package br.com.fernando.gerenciador.servlet;
+package br.com.fernando.gerenciador.acao;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -6,25 +6,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.fernando.gerenciador.modelo.Banco;
 import br.com.fernando.gerenciador.modelo.Empresa;
 
-/**
- * Servlet implementation class NovaEmpresaServlet
- */
-
-@WebServlet("/novaEmpresa")
-public class NovaEmpresaServlet extends HttpServlet {
+public class NovaEmpresa {
 	
-	private static final long serialVersionUID = 1L; // isso tira o warning da classe
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Cadastrando nova empresa");
+	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("ação adicionando empresa");
 		
 		String nomeDaEmpresa = request.getParameter("nome");
 		String paramDataEmpresa = request.getParameter("data");
@@ -46,12 +37,7 @@ public class NovaEmpresaServlet extends HttpServlet {
 		
 		request.setAttribute("empresa", empresa.getNome()); // colocando nome na requisição para pegar no jsp
 		
-		response.sendRedirect("listaEmpresas"); // o navegador vai fazer um novo redirecionamento
-		
-//		// chamar o JSP
-//		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas"); // despachar a requisição para outro Servlet
-//		request.setAttribute("empresa", empresa.getNome()); // colocando nome na requisição para pegar no jsp
-//		rd.forward(request, response); // leva a requisição e a resposta
+		response.sendRedirect("entrada?acao=ListaEmpresas"); // o navegador vai fazer um novo redirecionamento
 	}
 
 }
