@@ -25,7 +25,7 @@ public class MostraEmpresa {
 		
 		request.setAttribute("empresa", empresa);
 		
-		return "forward:/formAlteraEmpresa.jsp"; // despacha para esta pagina
+		return "forward:formAlteraEmpresa.jsp"; // despacha para esta pagina
 	}
 
 }
