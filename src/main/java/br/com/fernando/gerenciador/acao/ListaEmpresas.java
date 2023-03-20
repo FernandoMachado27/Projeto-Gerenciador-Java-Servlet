@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.fernando.gerenciador.modelo.Banco;
 import br.com.fernando.gerenciador.modelo.Empresa;
 
-public class ListaEmpresas { // não é um Servlet
+public class ListaEmpresas implements Acao{ // não é um Servlet
 	
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

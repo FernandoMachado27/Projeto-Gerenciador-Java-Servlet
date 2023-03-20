@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/oi") // mapeamento: nome do servlet que vamos usar na url
+@WebServlet(urlPatterns = "/teste") // mapeamento: nome do servlet que vamos usar na url
 public class HelloWorldServlet extends HttpServlet{
 	
 	@Override
