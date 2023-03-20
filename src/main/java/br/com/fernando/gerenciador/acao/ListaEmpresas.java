@@ -7,6 +7,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.fernando.gerenciador.modelo.Banco;
 import br.com.fernando.gerenciador.modelo.Empresa;
@@ -14,6 +15,11 @@ import br.com.fernando.gerenciador.modelo.Empresa;
 public class ListaEmpresas implements Acao{ // não é um Servlet
 	
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession sessao = request.getSession();
+		if (sessao.getAttribute("usuarioLogado") == null) { // se o usuario é nulo, vá para formLogin
+			return "redirect:entrada?acao=LoginForm";
+		}
 		
 		System.out.println("listando empresas");
 		
