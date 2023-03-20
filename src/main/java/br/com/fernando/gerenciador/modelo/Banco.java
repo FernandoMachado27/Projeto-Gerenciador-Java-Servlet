@@ -65,4 +65,13 @@ public class Banco { // classe para simular banco de dados
 		return null;
 	}
 
+	public Usuario existeUsuario(String login, String senha) {
+		for (Usuario usuario : listaUsuarios) { // usuario vai percorrer a lista e ver se existe
+			if (usuario.ehIgual(login, senha)) {
+				return usuario;
+			}
+		}
+		return null;
+	}
+
 }
