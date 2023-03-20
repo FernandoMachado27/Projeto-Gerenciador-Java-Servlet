@@ -7,17 +7,31 @@ import java.util.List;
 public class Banco { // classe para simular banco de dados
 	
 	private static List<Empresa> lista = new ArrayList<>();  // lista de empresas
+	private static List<Usuario> listaUsuarios = new ArrayList<>();
 	private static Integer chaveSequencial = 1;
 	
 	static { // executado quando a classe é carregada
 		Empresa empresa = new Empresa();
 		empresa.setId(chaveSequencial++); // aumenta 1
 		empresa.setNome("Alura");
+		
 		Empresa empresa2 = new Empresa();
 		empresa2.setId(chaveSequencial++);
 		empresa2.setNome("Caelum");
+		
 		lista.add(empresa);
 		lista.add(empresa2);
+		
+		Usuario u1 = new Usuario();
+		u1.setLogin("fernando");
+		u1.setSenha("5555");
+		
+		Usuario u2 = new Usuario();
+		u2.setLogin("victoria");
+		u2.setSenha("5555");
+		
+		listaUsuarios.add(u1);
+		listaUsuarios.add(u2);
 	}
 
 	public void adicionar(Empresa empresa) {
