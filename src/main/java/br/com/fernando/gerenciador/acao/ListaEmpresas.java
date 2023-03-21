@@ -16,11 +16,6 @@ public class ListaEmpresas implements Acao{ // não é um Servlet
 	
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession sessao = request.getSession();
-		if (sessao.getAttribute("usuarioLogado") == null) { // se o usuario é nulo, vá para formLogin
-			return "redirect:entrada?acao=LoginForm";
-		}
-		
 		System.out.println("listando empresas");
 		
 		Banco banco = new Banco();

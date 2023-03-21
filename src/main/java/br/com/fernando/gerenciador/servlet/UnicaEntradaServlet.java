@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import br.com.fernando.gerenciador.acao.Acao;
 
-@WebServlet("/entrada")
+@WebServlet(urlPatterns = "/entrada")
 public class UnicaEntradaServlet extends HttpServlet { // controlador
 	private static final long serialVersionUID = 1L;
 
